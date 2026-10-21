@@ -248,7 +248,7 @@ def test_nothing_to_segment_is_said_not_returned_empty(synth, fake_model):
         )
 
 
-def test_the_app_starts_and_offers_its_actions(local_runtime: Runtime[NniCache]):
+def test_the_app_starts_and_offers_its_actions(local_runtime: Runtime[None]):
     assert local_runtime.app is app
     assert {"nninteractive_along_path", "warm_nninteractive"} <= set(app.registry.implementations)
 

@@ -64,15 +64,6 @@ from path_nninteractive.placement import _ON_A_FACE, dataset_name_of, lens_volum
 __version__ = "0.1.0"
 
 
-@dataclass
-class NniCache:
-    """The app context: what every task of this agent shares. The model's image is in `nni`'s session."""
-
-    voxels: VoxelCache = field(
-        default_factory=lambda: VoxelCache(int(float(os.environ.get("PATH_NNINTERACTIVE_CACHE_GB", "4")) * 1024**3))
-    )
-
-
 # The app is a declaration: who it is, what it offers, and the services it uses.
 # `arkitekt run` finds it in this module (as `app`) and runs it; so does
 # `python app.py`, below.
@@ -83,8 +74,24 @@ app = App(
     author="jhnnsrs",
     scopes=["read", "write"],
     services=[mikro_service],
-    app_context=NniCache,
 )
+
+
+@app.context
+@dataclass
+class NniCache:
+    """What every task of this agent shares, built at startup. The model's image is in `nni`'s session."""
+
+    voxels: VoxelCache = field(
+        default_factory=lambda: VoxelCache(int(float(os.environ.get("PATH_NNINTERACTIVE_CACHE_GB", "4")) * 1024**3))
+    )
+
+
+@app.startup
+def start_cache() -> NniCache:
+    """A fresh voxel cache for each start of the agent; an action asks for it as `cache: NniCache`."""
+    return NniCache()
+
 
 COLLECTIONS = ["segment"]
 
@@ -321,4 +328,4 @@ def warm_nninteractive(*, task: Task) -> str:
 
 
 if __name__ == "__main__":
-    run(app, context=NniCache())
+    run(app)
