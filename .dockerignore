@@ -1,0 +1,11 @@
+# The image builds its own environment, at /opt/venv.
+.venv/
+.git/
+**/__pycache__/
+.pytest_cache/
+.ruff_cache/
+# Arkitekt's credentials, caches and the agent's journal.
+.arkitekt/*.json
+.arkitekt/cache/
+.arkitekt/servers/
+.arkitekt/rekuest_journal.db*

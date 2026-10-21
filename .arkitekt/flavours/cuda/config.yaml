@@ -1,0 +1,20 @@
+build_command:
+- docker
+- buildx
+- build
+- --platform
+- '{platform}'
+- '{output}'
+- -t
+- '{tag}'
+- -f
+- '{dockerfile}'
+- .
+capabilities: []
+description: nnInteractive on an NVIDIA GPU (CUDA 13, host driver >= 580)
+dockerfile: Dockerfile
+platforms:
+- linux/amd64
+selectors:
+- kind: cuda
+  memory: 8000

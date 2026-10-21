@@ -1,0 +1,6 @@
+# Hiding Arkitekt credentials, caches and journals
+*.json
+*.temp
+cache/
+servers/
+rekuest_journal.db*
