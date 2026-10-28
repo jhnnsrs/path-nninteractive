@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.1 (2026-10-28)
+
+### Bug Fixes
+
+- Record the scopes a run asks for (arkitekt 10.0.1)
+  ([`7405a26`](https://github.com/jhnnsrs/path-nninteractive/commit/7405a26019c32716a4ce96858fd6b23e646ce47e))
+
+
 ## v1.1.0 (2026-10-28)
 
 ### Features

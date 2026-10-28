@@ -61,7 +61,7 @@ from path_nninteractive.nni import MODEL_ID, NnInteractive, load_session
 from path_nninteractive.placement import _ON_A_FACE, dataset_name_of, lens_volume, path_frame, spacing_um_of
 
 # The version of the app. A release is the commit tagged with it (v1.2.3).
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 
 # The app is a declaration: who it is, what it offers, and the services it uses.
