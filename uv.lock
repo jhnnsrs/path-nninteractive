@@ -666,20 +666,19 @@ wheels = [
 
 [[package]]
 name = "fabriks"
-version = "2.0.0"
+version = "3.0.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "fast-simplification" },
-    { name = "meshoptimizer" },
     { name = "numpy" },
     { name = "pyarrow" },
     { name = "scipy" },
     { name = "shapely" },
     { name = "trimesh" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ec/24/fc038cab8194bad67699fd331b7b911d355832b7f26a1b622e3b55749a1c/fabriks-2.0.0.tar.gz", hash = "sha256:876a6644aec360d8e05f6dbadad4e47726608c096117570ebbd5ad363cb9781a", size = 115046, upload-time = "2026-10-23T18:58:27.526Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/df/35/4af88f56ca77a166fcc6607ffc3fd22c97cb5838be58b4e88625e153ddd9/fabriks-3.0.1.tar.gz", hash = "sha256:a843ccfb904c7e08ea24fdaa491d33574d10a2c318416bc865d05e5afdca4e12", size = 115377, upload-time = "2026-10-28T08:15:03.462Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8a/48/d8528f6919499129eb82d34aff143c4cc6c3bdf440623abe457f396f514a/fabriks-2.0.0-py3-none-any.whl", hash = "sha256:375f16123f02f79bd6e565b3967f1084bd91126181aa804a9e06fc20100779e2", size = 138345, upload-time = "2026-10-23T18:58:26.081Z" },
+    { url = "https://files.pythonhosted.org/packages/87/ef/fd0d3fc634ebe3ebf35743dcdb34761b6616e8f19d593cce91155594f97d/fabriks-3.0.1-py3-none-any.whl", hash = "sha256:647e91bf06178fc80accd5d03019181ead42694777aba9e2c5fee4ef8b94a9a9", size = 138651, upload-time = "2026-10-28T08:15:02.047Z" },
 ]
 
 [[package]]
@@ -1406,15 +1405,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec9
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8", size = 9979, upload-time = "2022-08-14T12:40:09.779Z" },
 ]
-
-[[package]]
-name = "meshoptimizer"
-version = "0.2.30a0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "numpy" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/35/b9/23259780df3097b6b70e7091970a689b677bd320b02a63fdf60493902167/meshoptimizer-0.2.30a0.tar.gz", hash = "sha256:36b18b61a95ba992de804b1e91e86be2ba185925e4e2c1481495f8c68a17f5db", size = 98795, upload-time = "2026-02-27T06:39:01.628Z" }
 
 [[package]]
 name = "mikro"
