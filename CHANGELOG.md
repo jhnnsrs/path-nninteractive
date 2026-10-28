@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.0 (2026-10-28)
+
+### Features
+
+- Ask for the scopes the clients need, on arkitekt 10
+  ([`6114fa2`](https://github.com/jhnnsrs/path-nninteractive/commit/6114fa26176e219d96a85ef37aca60b34c1cfeaa))
+
+
 ## v1.0.1 (2026-10-28)
 
 ### Bug Fixes
