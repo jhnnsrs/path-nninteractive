@@ -19,6 +19,7 @@ from mikro.api.schema import (
     AxisType,
     CoordinateSystem,
     TransformationByDimensionTransformation,
+    TransformationPart,
     TransformationScaleTransformation,
 )
 
@@ -54,7 +55,12 @@ def graph(spacing: np.ndarray) -> list[Any]:
     )
     scene = TransformationByDimensionTransformation(
         id="scene", kind="BY_DIMENSION", version=1, input=DRAWING, output=PHYSICAL,
-        inputAxes=tuple("zyx"), outputAxes=tuple("zyx"), scale=(), translation=(), affine=(),
+        inputAxes=tuple("zyx"), outputAxes=tuple("zyx"),
+        parts=(
+            TransformationPart(
+                kind="IDENTITY", inputAxes=tuple("zyx"), outputAxes=tuple("zyx"), scale=(), translation=(), affine=()
+            ),
+        ),
     )
     return [calibration, scene]
 
@@ -88,6 +94,9 @@ class StubLens:
 
     def derive(self, **kwargs: Any) -> Any:
         return ns(**{"kind": "derive", **kwargs})
+
+    def derive_projection(self, axes: list[str], *, value_relation: Any = None) -> Any:
+        return ns(kind="BY_DIMENSION", axes=list(axes), value_relation=value_relation)
 
 
 class StubMikro:

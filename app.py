@@ -251,16 +251,10 @@ def upload_mesh(
         name=f"{source} · nnInteractive surface along {name}",
         store=built,
         axes=xyz_axes,
-        # BY_DIMENSION, by axis name: the lens may carry axes the surface has not
-        # (a channel), which a MAP_AXIS (a pure permutation) is refused for.
-        derived_from=[
-            lens.derive(
-                kind="BY_DIMENSION",
-                input_axes=xyz_axes,
-                output_axes=xyz_axes,
-                value_relation=ValueRelation.TRANSFORMED,
-            )
-        ],
+        # A projection: BY_DIMENSION naming x, y and z, by axis name -- the lens may
+        # carry axes the surface has not (a channel), which a MAP_AXIS (a pure
+        # permutation) is refused for, and an axis no one names is not claimed.
+        derived_from=[lens.derive_projection(xyz_axes, value_relation=ValueRelation.TRANSFORMED)],
     )
     return collection.lens()
 
