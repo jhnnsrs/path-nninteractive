@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v1.1.2 (2026-10-28)
+
+### Bug Fixes
+
+- The recorded manifest carries the scopes a run asks for (arkitekt 10.0.2)
+  ([`b5c6c7b`](https://github.com/jhnnsrs/path-nninteractive/commit/b5c6c7b59f5f8744cd8140e71653fd6cda020182))
+
+### Build System
+
+- Lock arkitekt 10.0.2
+  ([`534fd83`](https://github.com/jhnnsrs/path-nninteractive/commit/534fd8331eae172c5d524f7dee46c97c9f60906b))
+
+
 ## v1.1.1 (2026-10-28)
 
 ### Bug Fixes
