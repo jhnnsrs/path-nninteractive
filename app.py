@@ -72,7 +72,6 @@ app = App(
     __version__,
     description="nnInteractive 3D segmentation along a drawn path",
     author="jhnnsrs",
-    scopes=["read", "write"],
     services=[mikro_service],
 )
 
