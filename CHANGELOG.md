@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.3 (2026-10-28)
+
+### Bug Fixes
+
+- Release an image built on arkitekt 10.0.2
+  ([`9e2be2a`](https://github.com/jhnnsrs/path-nninteractive/commit/9e2be2a9e879adb6ad1b943a4bb16c57ff4d6e95))
+
+
 ## v1.1.2 (2026-10-28)
 
 ### Bug Fixes
