@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.1 (2026-10-28)
+
+### Bug Fixes
+
+- Build on fabriks 3, which needs no compiler
+  ([`d7e5e05`](https://github.com/jhnnsrs/path-nninteractive/commit/d7e5e05670cb76a0509719118ac19744cf72c6a0))
+
+
 ## v1.0.0 (2026-10-28)
 
 ### Features
