@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v1.1.5 (2026-11-01)
+
+### Bug Fixes
+
+- Release an image built on arkitekt 13.0.0
+  ([`e2d0368`](https://github.com/jhnnsrs/path-nninteractive/commit/e2d03688e545da5e2d90d8ba88db714a4727270e))
+
+### Build System
+
+- Lock arkitekt 13.0.0
+  ([`19c90b7`](https://github.com/jhnnsrs/path-nninteractive/commit/19c90b70c5e20b0e04753a7a2dc850466aebbe31))
+
+
 ## v1.1.4 (2026-11-01)
 
 ### Bug Fixes
