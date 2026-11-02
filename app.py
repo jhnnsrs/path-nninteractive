@@ -40,7 +40,7 @@ import os
 import time
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Annotated, Any, Optional, Tuple
+from typing import Annotated, Any
 
 import numpy as np
 import xarray as xr
@@ -282,9 +282,9 @@ def nninteractive_along_path(
     mikro: Mikro,
     task: Task,
     cache: NniCache,
-) -> Tuple[
+) -> tuple[
     Annotated[LabelMask, Description("The segmentation, as a label crop")],
-    Annotated[Optional[MeshLens], Description("The surface, if asked for")],
+    Annotated[MeshLens | None, Description("The surface, if asked for")],
 ]:
     """nnInteractive Along Path
 

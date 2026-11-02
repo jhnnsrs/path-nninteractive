@@ -14,7 +14,8 @@ import threading
 import time
 from collections import OrderedDict
 from itertools import product
-from typing import Any, Callable
+from typing import Any
+from collections.abc import Callable
 
 import numpy as np
 import xarray as xr

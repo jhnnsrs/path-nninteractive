@@ -40,3 +40,7 @@ allow_zero_version = true
 [tool.semantic_release.branches.release]
 match = "main"
 prerelease = false
+
+[tool.ruff.lint]
+extend-select = ["UP"]
+extend-ignore = ["UP037", "UP038", "UP042", "UP040", "UP046", "UP047", "UP049"]
