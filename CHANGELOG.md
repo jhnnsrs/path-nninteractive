@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v1.1.6 (2026-11-03)
+
+### Bug Fixes
+
+- Read the voxel size the server resolves for a lens
+  ([`0acc371`](https://github.com/jhnnsrs/path-nninteractive/commit/0acc37187a2a60cb74a40510e4471f5274bf55b3))
+
+### Refactoring
+
+- Adopt Python 3.11 typing (X | None, builtin generics, collections.abc)
+  ([`48d3767`](https://github.com/jhnnsrs/path-nninteractive/commit/48d37676dce8626b8aff0172b4a646f579d087c5))
+
+
 ## v1.1.5 (2026-11-01)
 
 ### Bug Fixes
