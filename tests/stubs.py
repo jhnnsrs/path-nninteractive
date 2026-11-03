@@ -72,9 +72,13 @@ class StubLens:
     coordinate_system = IMAGE
     axis_names = ("c", "z", "y", "x")
 
-    def __init__(self, volume: np.ndarray):
+    def __init__(self, volume: np.ndarray, spacing: np.ndarray):
         self.volume = volume
         self.opened = 0
+        # What the server resolves along `graph(spacing)`'s calibration: `ArrayLens.voxelSize`.
+        self.voxel_size = tuple(
+            ns(axis=axis, size=float(size), unit="micrometer", type="SPACE") for axis, size in zip("zyx", spacing)
+        )
 
     @property
     def data(self) -> xr.DataArray:

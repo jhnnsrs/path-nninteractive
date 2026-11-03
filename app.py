@@ -53,12 +53,12 @@ from mikro.api.schema import (
     ValueRelation,
 )
 from mikro.arkitekt.specs import LabelMask, PathAnnotation, SingleChannelVolume
-from mikro.arkitekt.widgets import reachable_from
+from mikro.arkitekt.widgets import overlapping
 
 from path_nninteractive import geometry
 from path_nninteractive.cache import VoxelCache
 from path_nninteractive.nni import MODEL_ID, NnInteractive, load_session
-from path_nninteractive.placement import _ON_A_FACE, dataset_name_of, lens_volume, path_frame, spacing_um_of
+from path_nninteractive.placement import _ON_A_FACE, dataset_name_of, lens_volume, path_frame, voxel_size_um
 
 # The version of the app. A release is the commit tagged with it (v1.2.3).
 __version__ = "1.1.5"
@@ -149,7 +149,7 @@ def segment_path(
             f"over {list(space_axes)}, the image is {shape.tolist()}."
         )
 
-    spacing_um = voxels.remember(str(lens.id), "spacing", lambda: spacing_um_of(mikro, lens))
+    spacing_um = voxels.remember(str(lens.id), "spacing", lambda: voxel_size_um(lens))
     calibrated = all(axis in spacing_um for axis in space_axes)
     spacing = np.array([spacing_um[axis] for axis in space_axes]) if calibrated else np.ones(3)
     if not calibrated:
@@ -266,7 +266,7 @@ def upload_mesh(
 @app.action(name="nnInteractive Along Path", collections=COLLECTIONS, concurrency="serial")
 def nninteractive_along_path(
     path: Annotated[PathAnnotation, Description("The PATH to segment along: a rough tracing is enough")],
-    lens: Annotated[SingleChannelVolume, reachable_from("path"), Description("The channel the structure is stained in")],
+    lens: Annotated[SingleChannelVolume, overlapping("path"), Description("The channel the structure is stained in")],
     radius_um: Annotated[float, Description("How far from the path the structure may reach")] = 1.5,
     prompt: Annotated[Prompt, Description("A scribble along the path (faster), or points along it")] = Prompt.SCRIBBLE,
     prompt_every_um: Annotated[float, Description("Distance between points, when prompting with points")] = 2.0,

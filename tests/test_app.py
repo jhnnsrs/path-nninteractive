@@ -194,7 +194,7 @@ def test_nothing_to_prompt_is_empty_not_an_error():
 def test_the_action_uploads_a_label_crop_placed_on_the_axon(synth, fake_model):
     mikro = StubMikro(graph(synth.spacing))
     label, mesh = nninteractive_along_path(
-        drawn_path(synth.rough, synth.spacing), StubLens(synth.volume), **PARAMS, with_mesh=True,
+        drawn_path(synth.rough, synth.spacing), StubLens(synth.volume, synth.spacing), **PARAMS, with_mesh=True,
         mikro=mikro, task=Task.local(), cache=NniCache(VoxelCache(512 * 1024**2)),
     )
 
@@ -220,7 +220,7 @@ def test_the_action_uploads_a_label_crop_placed_on_the_axon(synth, fake_model):
 
 def test_a_re_run_on_the_same_crop_keeps_the_image_and_the_voxels(synth, fake_model):
     mikro = StubMikro(graph(synth.spacing))
-    lens = StubLens(synth.volume)
+    lens = StubLens(synth.volume, synth.spacing)
     cache = NniCache(VoxelCache(512 * 1024**2))
     path = drawn_path(synth.rough, synth.spacing)
     nninteractive_along_path(path, lens, **PARAMS, mikro=mikro, task=Task.local(), cache=cache)
@@ -243,7 +243,7 @@ def test_nothing_to_segment_is_said_not_returned_empty(synth, fake_model):
     flat = np.full_like(synth.volume, 100)
     with pytest.raises(ValueError, match="stands out"):
         nninteractive_along_path(
-            drawn_path(synth.rough, synth.spacing), StubLens(flat), **PARAMS,
+            drawn_path(synth.rough, synth.spacing), StubLens(flat, synth.spacing), **PARAMS,
             mikro=StubMikro(graph(synth.spacing)), task=Task.local(), cache=NniCache(VoxelCache(512 * 1024**2)),
         )
 

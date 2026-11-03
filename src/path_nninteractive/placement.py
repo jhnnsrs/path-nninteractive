@@ -23,11 +23,9 @@ import numpy as np
 import pint
 import xarray as xr
 from mikro import Mikro
-from mikro.api.schema import TransformationFilter
 from mikro.vocabulary import COMPOSABLE_KINDS
 
 _UREG = pint.UnitRegistry()
-_LENGTH = _UREG.micrometer.dimensionality
 
 _PATH_KINDS = {"PATH", "LINE"}
 
@@ -40,78 +38,21 @@ def _value(kind: Any) -> str:
     return str(getattr(kind, "value", kind))
 
 
-def _affine_diagonal(affine: Any) -> list[float] | None:
-    """The per-axis factors of an axis-aligned affine, or None if it is not one."""
-    if affine is None:
-        return None
-    rows = [list(row) for row in affine]
-    if not rows or any(len(row) != len(rows) + 1 for row in rows):
-        return None
-    for i, row in enumerate(rows):
-        if any(abs(value) > 1e-9 for j, value in enumerate(row[:-1]) if j != i):
-            return None
-    return [float(row[i]) for i, row in enumerate(rows)]
+def voxel_size_um(lens: Any) -> dict[str, float]:
+    """The lens' voxel size in micrometres per SPACE axis, as the server resolves it: ``{}`` when uncalibrated.
 
-
-def _is_length(unit: str | None) -> bool:
-    if not unit:
-        return False
-    try:
-        return _UREG(unit).dimensionality == _LENGTH
-    except Exception:
-        return False
-
-
-def spacing_um_of(mikro: Mikro, lens: Any, *, max_hops: int = 3) -> dict[str, float]:
-    """Per-axis voxel size in micrometres, walked out of the lens' space.
-
-    Follows SCALE (and axis-aligned AFFINE, which is what `calibrate` authors
-    once a translation comes with the pixel size) edges out of the lens'
-    coordinate system and stops at the first space whose axes carry a length
-    unit. `{}` means the data is uncalibrated; a failing query raises.
+    `ArrayLens.voxelSize` is read along the edges to the first space with units, BY_DIMENSION
+    parts and stepped crops included, with one calibration picked by the edges' validity. A
+    lens without the field came from a query that does not select it, which is refused
+    rather than read as "uncalibrated".
     """
-    system = getattr(lens, "coordinate_system", None)
-    if system is None:
-        return {}
-
-    frontier: list[tuple[str, dict[str, float]]] = [(str(system.id), {})]
-    seen = {str(system.id)}
-    for _ in range(max_hops):
-        nxt: list[tuple[str, dict[str, float]]] = []
-        for system_id, carried in frontier:
-            edges = mikro.get_transformations(
-                filters=TransformationFilter(input=system_id)
-            )
-            for edge in edges:
-                output = getattr(edge, "output", None)
-                if output is None:
-                    continue
-                scale = getattr(edge, "scale", None)
-                if scale is None:
-                    scale = _affine_diagonal(getattr(edge, "affine", None))
-                in_axes = sorted(getattr(getattr(edge, "input", None), "axes", []) or [], key=lambda a: a.order)
-                out_axes = sorted(getattr(output, "axes", []) or [], key=lambda a: a.order)
-                factors = dict(carried)
-                if scale is not None and in_axes and len(scale) == len(in_axes):
-                    for axis, factor in zip(in_axes, scale):
-                        factors[axis.name] = factors.get(axis.name, 1.0) * float(factor)
-                spacings: dict[str, float] = {}
-                for axis in out_axes:
-                    unit = str(axis.unit) if axis.unit else None
-                    if not _is_length(unit):
-                        continue
-                    factor = factors.get(axis.name)
-                    if factor is None:
-                        continue
-                    spacings[axis.name] = float((factor * _UREG(unit)).to("micrometer").magnitude)
-                if spacings:
-                    return spacings
-                output_id = str(output.id)
-                if output_id not in seen:
-                    seen.add(output_id)
-                    nxt.append((output_id, factors))
-        frontier = nxt
-    return {}
+    if not hasattr(lens, "voxel_size"):
+        raise TypeError(f"{type(lens).__name__} carries no `voxel_size`: fetch the lens through the ArrayLens fragment.")
+    sizes: dict[str, float] = {}
+    for entry in lens.voxel_size or ():
+        if _value(entry.type) == "SPACE":
+            sizes[entry.axis] = float((entry.size * _UREG(entry.unit)).to("micrometer").magnitude)
+    return sizes
 
 
 _DATASET_NAME_DOCUMENT = """
