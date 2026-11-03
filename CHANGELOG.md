@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.7 (2026-11-03)
+
+### Bug Fixes
+
+- Build on arkitekt 13.1.0
+  ([`7166e72`](https://github.com/jhnnsrs/path-nninteractive/commit/7166e7229f832156bb9758b47747fe80abf93a6b))
+
+
 ## v1.1.6 (2026-11-03)
 
 ### Bug Fixes
