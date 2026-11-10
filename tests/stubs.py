@@ -81,7 +81,7 @@ class StubLens:
         )
 
     @property
-    def data(self) -> xr.DataArray:
+    def xarray_data(self) -> xr.DataArray:
         import dask.array as da
 
         self.opened += 1
