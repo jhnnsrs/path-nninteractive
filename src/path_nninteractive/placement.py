@@ -200,7 +200,7 @@ def lens_volume(
     key = f"{lens.id}|" + ",".join(f"{k}={v}" for k, v in sorted(pinned.items()))
 
     def open_() -> xr.DataArray:
-        data = lens.data
+        data = lens.xarray_data
         data = data.isel({name: value for name, value in pinned.items() if name in data.dims})
         wide = {str(d): int(data.sizes[d]) for d in data.dims if d not in space_axes and data.sizes[d] > 1}
         if wide:
