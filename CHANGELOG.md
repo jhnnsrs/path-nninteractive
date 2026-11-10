@@ -2,6 +2,17 @@
 
 <!-- version list -->
 
+## v1.1.8 (2026-11-10)
+
+### Bug Fixes
+
+- Test stubs offer xarray_data, as mikro 13 lenses do
+  ([`86d8238`](https://github.com/jhnnsrs/path-nninteractive/commit/86d8238630211a7374eafac06752392854a91fd3))
+
+- **deps**: Arkitekt 14.1.0 and mikro 13, with the Open in Arkitekt badge
+  ([`1b512ef`](https://github.com/jhnnsrs/path-nninteractive/commit/1b512efb21ba220e63318e304c6a6facdd90b6f5))
+
+
 ## v1.1.7 (2026-11-03)
 
 ### Bug Fixes
