@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.9 (2026-11-15)
+
+### Bug Fixes
+
+- **deps**: Arkitekt 16, on agent protocol 2
+  ([`1e12037`](https://github.com/jhnnsrs/path-nninteractive/commit/1e12037abcd167c56bfd5e8e31c932d71d49b3c1))
+
+
 ## v1.1.8 (2026-11-10)
 
 ### Bug Fixes
