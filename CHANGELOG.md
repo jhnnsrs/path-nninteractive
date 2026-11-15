@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.10 (2026-11-15)
+
+### Bug Fixes
+
+- **deps**: Rekuest 15.0.1 and arkitekt-runtime 10.0.1
+  ([`99c04d4`](https://github.com/jhnnsrs/path-nninteractive/commit/99c04d4a490df1a5be63743ad6355efb5d8c8e7d))
+
+
 ## v1.1.9 (2026-11-15)
 
 ### Bug Fixes
