@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.11 (2026-11-15)
+
+### Bug Fixes
+
+- **deps**: Arkitekt 17 and arkitekt-spec 11
+  ([`a2b023d`](https://github.com/jhnnsrs/path-nninteractive/commit/a2b023d475741bc4d14a04a6e52297905d58d276))
+
+
 ## v1.1.10 (2026-11-15)
 
 ### Bug Fixes
