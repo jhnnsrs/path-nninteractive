@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.13 (2026-11-24)
+
+### Bug Fixes
+
+- Build on arkitekt 18.5.2, rekuest 18, arkitekt-spec 13 and mikro 14.2
+  ([`dd4116e`](https://github.com/jhnnsrs/path-nninteractive/commit/dd4116e72c504add9aaa60bb81b4c5f3ecf8647f))
+
+
 ## v1.1.12 (2026-11-16)
 
 ### Bug Fixes
