@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.14 (2026-11-25)
+
+### Bug Fixes
+
+- Runs on arkitekt 19
+  ([`d1a8154`](https://github.com/jhnnsrs/path-nninteractive/commit/d1a81544cb2df8943de8ddb5ced2078bb624f56c))
+
+
 ## v1.1.13 (2026-11-24)
 
 ### Bug Fixes
