@@ -45,7 +45,7 @@ from typing import Annotated, Any
 import numpy as np
 import xarray as xr
 from arkitekt import App, Description, Task, run
-from mikro import Mikro, mikro_service
+from mikro import Mikro
 from mikro.api.schema import (
     AnnotationDerivedFromInput,
     AxisType,
@@ -72,7 +72,7 @@ app = App(
     __version__,
     description="nnInteractive 3D segmentation along a drawn path",
     author="jhnnsrs",
-    services=[mikro_service],
+    clients=[Mikro],
 )
 
 
